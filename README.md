@@ -1,4 +1,4 @@
-# Subtreams Triggers - Importing transactions from the USDT Exchange Substreams.
+# Template for Substreams-powered-Subgraphs on Injective
 
 # Table of Contents
 - [Pre-requesites](#pre-requesites)
