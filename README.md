@@ -8,7 +8,7 @@
 ## Pre-requesites 
 Before proceeding, ensure you have all dependencies installed by running the following command:
 ```bash
-    yarn install 
+yarn install 
 ```
 ## Launch local graph-node
 To test your subgraph locally, make sure to deploy a local instance of the graph-node using the `./start.sh` script in `dev-environment` folder. 
@@ -16,8 +16,8 @@ To test your subgraph locally, make sure to deploy a local instance of the graph
 Set your `SUBSTREAMS_API_TOKEN` and run the script in the `dev-environment` folder, by using the following commands: 
 
 ```bash
-  export SUBSTREAMS_API_TOKEN = "YOUR_TOKEN"
-  ./start.sh -c # Flag -c can be added to clean the persistent folders prior running Postgres, IPFS and any similar required services
+export SUBSTREAMS_API_TOKEN = "YOUR_TOKEN"
+./start.sh -c # Flag -c can be added to clean the persistent folders prior running Postgres, IPFS and any similar required services
 ```
 This script is running docker-compose to run all necessary instances to launch properly the node locally.
 
