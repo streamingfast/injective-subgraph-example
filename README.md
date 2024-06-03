@@ -1,6 +1,29 @@
 # Subtreams Triggers - Importing transactions from the USDT Exchange Substreams.
 
-## Getting Started
+# Table of Contents
+- [Pre-requesites](#pre-requesites)
+- [Launch local graph-node](#launch-local-graph-node)
+- [Subgraph deployment](#subgraph-deployment)
+
+## Pre-requesites 
+Before proceeding, ensure you have all dependencies installed by running the following command:
+```bash
+    yarn install 
+```
+## Launch local graph-node
+To test your subgraph locally, make sure to deploy a local instance of the graph-node using the `./start.sh` script in `dev-environment` folder. 
+
+Set your `SUBSTREAMS_API_TOKEN` and run the script in the `dev-environment` folder, by using the following commands: 
+
+```bash
+  export SUBSTREAMS_API_TOKEN = "YOUR_TOKEN"
+  ./start.sh -c # Flag -c can be added to clean the persistent folders prior running Postgres, IPFS and any similar required services
+```
+This script is running docker-compose to run all necessary instances to launch properly the node locally.
+
+
+## Subgraph deployment
+Now that your dev environment is fully set up, you are ready to deploy your subgraph!
 
 1. Prepare the substreams
 
@@ -36,16 +59,19 @@ substreams pack
 This creates the `wasm-events-v0.1.0.spkg` file in the local folder, which will be referenced by subgraph.yaml.
 
 
-2. Install the dependencies:
+2. Generate the code defined in the mappings
 
 ```bash
-npm install
+yarn codegen
 ```
 
-3. Generate the code defined in the mappings
+3. Code your subgraph in `mappings.ts`, build it, deploy it on a local graph-node instance connected to injective-mainnet:
 
 ```bash
-npm run codegen
+yarn build
+yarn create-local
+yarn run deploy-local
+yarn run remove-local
 ```
 
 4. Generate the Protobuf of the EventList that substreams outputs (and its dependencies):
@@ -56,18 +82,9 @@ npm run codegen
 buf generate --type="sf.substreams.cosmos.v1.EventList"  wasm-events-v0.1.0.spkg#format=bin
 ```
 
-5. Code your subgraph in `mappings.ts`, build it, deploy it on a local graph-node instance connected to injective-mainnet:
+5. Publish to The Graph network:
 
 ```bash
-npm run build
-npm run create-local
-npm run deploy-local
-# npm run remove-local
-```
-
-6. Publish to The Graph network:
-
-```bash
-npm run publish
+yarn publish
 ```
 
