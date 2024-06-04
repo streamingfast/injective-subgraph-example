@@ -9,16 +9,16 @@ You will also learn how to deploy your subgraph on a `local` graph-node instance
 - [Pre-requesites](#pre-requesites)
   - [Install Substreams](#install-substreams)
   - [Install Dependencies](#install-dependencies)
-  - [Install Docker](#install-docker-(optional))
-  - [Get Substreams API Token](#get-substreams-api-token-(optional))
-- [Launch local graph-node](#launch-local-graph-node-(optional))
+  - [Install Docker (Optional)](#install-docker-optional)
+  - [Get Substreams API Token (Optional)](#get-substreams-api-token-optional)
+- [Launch local graph-node (Optional)](#launch-local-graph-node-optional)
 - [Write a Subgraph](#write-a-subgraph)
   - [Prepare the substreams](#prepare-the-substreams)
-  - [Generate the code defined in the mappings](#generate-the-code-defined-in-the-mappings)
-  - [Generate additional Protobufs](#generate-additional-protobufs-(optional))
+  - [Generate schema entities](#generate-schema-entities)
+  - [Generate additional Protobufs (Optional)](#generate-additional-protobufs-optional)
 - [Deploy a subgraph](#deploy-a-subgraph)
-  - [Deploy on local graph-node](#deploy-on-local-graph-node)
-  - [Deploy on external graph-node](#deploy-on-external-graph-node)
+  - [Deploy on local graph-node (Optional)](#deploy-on-local-graph-node-optional)
+  - [Deploy on Subgraph studio](#deploy-on-subgraph-studio)
 - [Publish a Subgraph](#publish-a-subgraph)
 
 ## Pre-requesites
@@ -107,7 +107,7 @@ substreams pack
 
 This creates the `wasm-events-v0.1.0.spkg` file in the local folder, which will be referenced by subgraph.yaml.
 
-### Generate entities 
+### Generate schema entities 
 In order to make it easy and type-safe to work with smart contracts, events and entities, you can generate `AssemblyScript` types from the subgraph's GraphQL schema.
 Once all needed entities are described in your GraphQL schema, you can start code generation: 
 
@@ -130,7 +130,7 @@ Now that your dev environment is fully set up, you are ready to deploy your subg
 ## Deploy a subgraph
 Once you have finished writing your subgraph, you can now build, create and deploy it through your `local graph-node` instance or in `Subgraph studio`.
 
-### Deploy on local graph-node  (Optional)
+### Deploy on local graph-node (Optional)
 To deploy it on your `local graph-node` intance:
 
 ```bash
