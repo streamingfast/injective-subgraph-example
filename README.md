@@ -52,7 +52,7 @@ npm install
 
 ### Get Substreams API Token (Optional)
 If you intend to run a local graph-node instance, you will need to get a substreams API token. You local graph-node instance needs to connect to the substreams API to get source data.
-To interact with the substreams API, it needs to set an API token. You can get it by following the instructions on the [authentification section](https://substreams.streamingfast.io/documentation/consume/authentication) in the `Streaming Fast` documentation.
+To interact with the substreams API, it needs to set an API token. You can get it by following the instructions on the [authentification section](https://substreams.streamingfast.io/documentation/consume/authentication) in the `StreamingFast` documentation.
 
 ### Install Docker (Optional)
 If you intend to run a local graph-node instance, you will need to install Docker. You can do it by following the instructions on the [official Docker website](https://docs.docker.com/get-docker/).
@@ -108,14 +108,17 @@ Note: To do so, you will need substreams v1.7.2 or above
 This creates the `wasm-events-v0.1.0.spkg` file in the local folder, which will be referenced by subgraph.yaml.
 
 ### Generate schema entities 
-In order to make it easy and type-safe to work with smart contracts, events and entities, you can generate `AssemblyScript` types from the subgraph's GraphQL schema.
-Once all needed entities are described in your GraphQL schema, you can start code generation: 
+
+* Subgraphs write data using a structure known as an entity.
+* Define them in your [schema.graphql](./schema.graphql) according to this documentation: https://thegraph.com/docs/en/developing/creating-a-subgraph/#the-graphql-schema
+* Then, generate the `AssemblyScript` types:
 
 ```bash
 yarn codegen
 ```
 
 ### Generate additional protobufs (Optional) 
+
 Your subgraph may use protobuf generation depending on which substreams module you got in source. In the template subgraph, the `substreams source module` has the `sf.substreams.cosmos.v1.EventList` protobuf type as output. Protobufs used in the `substreams source module` must be contained within the `substreams package` previously build. To generate needed protobufs, you can use the following command.
 
 ```bash
