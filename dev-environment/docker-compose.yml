@@ -2,7 +2,7 @@ version: "3"
 services:
   graph-node:
     container_name: graph-node
-    image: graphprotocol/graph-node
+    image: graphprotocol/graph-node:canary-substreams-index-module-e532c3135
     ports:
       - '8000:8000'
       - '8001:8001'

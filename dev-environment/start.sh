@@ -28,6 +28,7 @@ main() {
   fi
 
   prepare
+  checkToken
 
   exec docker-compose up 
 }
@@ -38,6 +39,13 @@ prepare() {
 
   if [[ ! -d "./data/postgres" ]]; then
     mkdir -p ./data/postgres 1> /dev/null
+  fi
+}
+
+checkToken() {
+  if [[ -z "${SUBSTREAMS_API_TOKEN}" ]]; then
+    echo "Please set SUBSTREAMS_API_TOKEN in your environment"
+    exit 1
   fi
 }
 
