@@ -10,7 +10,8 @@
     "remove-local": "graph remove --node http://localhost:8020/ subraphtest",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 subraphtest",
     "test": "graph test",
-    "launch-graph-node": "./dev-environment/start.sh -c"
+    "launch-graph-node": "./dev-environment/start.sh",
+    "reset-graph-node": "./dev-environment/start.sh -c"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.73.0",

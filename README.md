@@ -20,6 +20,9 @@ You will also learn how to deploy your subgraph on a `local` graph-node instance
   - [Deploy on local graph-node (Optional)](#deploy-on-local-graph-node-optional)
   - [Deploy on Subgraph studio](#deploy-on-subgraph-studio)
 - [Publish a Subgraph](#publish-a-subgraph)
+- [Local Graph Node Management](#local-graph-node-management-optional)
+  - [Reset node](#reset-node)
+  - [Check logs](#check-logs)
 
 ## Pre-requesites
 
@@ -153,9 +156,35 @@ yarn create
 yarn deploy
 ```
 
+## Query a subgraph 
+Once you subgraph is deployed, you can query it! To do so, you can directly write your query locally on http://localhost:8000/subgraphs/name/subraphtest/ (do not forget to update the url if you deployed your subgraph using another name than `subgraphtest`) or directly on `Subgraph Studio`.
+
+Here is an example of query (based on our example) :
+
+```graphQL
+{
+  usdtexchangevolumes(first:5) {
+    id,
+    amount
+  }
+}
+```
+
+
 ## Publish a Subgraph
 Now that you have deployed your subgraph, you can choose to publish it to the Graph Network!
 
 ```bash
 yarn publish
 ```
+
+## Local Graph Node Management (Optional)
+
+### Reset node 
+To reset and re-launch your local graph node, you can use the following script: 
+```bash
+yarn reset-graph-node
+``` 
+
+### Check Logs 
+To check your graph-node logs, you can see the graph-node logs in the window running docker-compose, or you can fetch them from docker... 
