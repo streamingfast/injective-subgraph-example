@@ -38,17 +38,13 @@ brew install streamingfast/tap/substreams
 To check if `substreams` installation was successful, you can run the following command:
 
 ```bash
-substreams version 
+substreams --version 
 ```
 
 ### Install Dependencies
-The next step is to install the all necessary dependencies using `yarn` or `npm` package manager.
+The next step is to install the all necessary dependencies using `npm` package manager.
 Run the following command in the `root` of the repository:
 
-```bash
-yarn install
-```
-or 
 ```bash
 npm install
 ```
@@ -58,7 +54,7 @@ If you intend to run a local graph-node instance, you will need to get a substre
 To interact with the substreams API, it needs to set an API token. You can get it by following the instructions on the [authentification section](https://substreams.streamingfast.io/documentation/consume/authentication) in the `StreamingFast` documentation.
 
 ### Install Docker (Optional)
-If you intend to run a local graph-node instance, you will need to install Docker. You can do it by following the instructions on the [official Docker website](https://docs.docker.com/get-docker/).
+If you intend to run a local `graph-node` instance, you will need to install Docker. You can do it by following the instructions on the [official Docker website](https://docs.docker.com/get-docker/).
 
 ## Launch local graph-node (Optional)
 To deploy your subgraph locally, you need to run a local graph-node instance. To do so, export your `SUBSTREAMS_API_TOKEN` and
@@ -66,26 +62,26 @@ use the `launch-graph-node` script :
 
 ```bash
 export SUBSTREAMS_API_TOKEN = "YOUR_TOKEN"
-yarn launch-graph-node 
+npm run launch-graph-node 
 ```
-This script is running docker-compose to create all necessary instances to launch properly the node locally on the `injective-mainnet` network.
+This script is running `docker compose` to create all necessary instances to launch properly the node locally on the `injective-mainnet` network.
 
 ## Write a Subgraph 
 
 ### Prepare the substreams
 
-When writing a `substreams powered subgraph`, your subgraph is using substreams as a source of data. 
-In this template, we are using the [injective-common](https://substreams.dev/streamingfast/injective-common/v0.1.0) substreams has a `filtered_events` module 
+When writing a `Substreams powered Subgraph`, your Subgraph is using Substreams as a source of data. 
+In this template, we are using the [injective-common](https://substreams.dev/streamingfast/injective-common/v0.1.0) Substreams has a `filtered_events` module 
 that allows getting only the events matching certain types.
 
-To use your substreams as a source, you must first pack it into a package file (.spkg). In the template example, we are using a substreams module that filters events related to `wasm_events` parameter. 
+To use your Substreams as a source, you must first pack it into a package file (.spkg). In the template example, we are using a substreams module that filters events related to `wasm_events` parameter. 
 In this case, we are filtering events related to `wasm` events.
 
 ```yaml
 # substreams.yaml
 specVersion: v0.1.0
 package:
-  name: wasm_events
+  name: map_events
   version: v0.1.0
 
 network: injective-mainnet
@@ -93,22 +89,27 @@ imports:
   injective: https://spkg.io/streamingfast/injective-common-v0.1.0.spkg
 
 modules:
-  - name: wasm_events
+  - name: map_events
     use: injective:filtered_events
+    initialBlock: 72934214
 
 params:
-  wasm_events: "wasm"
+  map_events: wasm
 ```
-Note: You can edit the `substreams.yaml` and choose a desired name for events to filter
 
-Once your `substreams` manifest (substreams.yaml) is ready, you can pack it into a package file (.spkg):
+> [!NOTE]
+> You can edit the [substreams.yaml](./substreams.yaml) and choose a desired name for events to filter.
+
+Once your `substreams` manifest ([substreams.yaml](./substreams.yaml)) is ready, you can pack it into a package file (.spkg):
 
 ```bash
 substreams pack
 ```
-Note: To do so, you will need substreams v1.7.2 or above
 
-This creates the `wasm-events-v0.1.0.spkg` file in the local folder, which will be referenced by subgraph.yaml.
+> [!NOTE] 
+> You will need `substreams` v1.7.2 or above for the command to succeed, if you don't have a recent enough version, the error is going to look like `Error: reading manifest "": unable to get package: unable to convert manifest to package: failed to convert manifest to pkg: module "map_events" refers to binary "default", which is not defined in the 'binaries' section of the manifest`.
+
+This creates the `map-events-v0.1.0.spkg` file in the local folder, which will be referenced by [subgraph.yaml](./subgraph.yaml).
 
 ### Generate schema entities 
 
@@ -117,7 +118,7 @@ This creates the `wasm-events-v0.1.0.spkg` file in the local folder, which will 
 * Then, generate the `AssemblyScript` types:
 
 ```bash
-yarn codegen
+npm run codegen
 ```
 
 ### Generate additional protobufs (Optional) 
@@ -127,9 +128,11 @@ Your subgraph may use protobuf generation depending on which substreams module y
 ```bash
 # you probably want to delete the previous bindings
 # rm -rf src/pb
-buf generate --type="sf.substreams.cosmos.v1.EventList"  wasm-events-v0.1.0.spkg#format=bin
+buf generate --type="sf.substreams.cosmos.v1.EventList" map-events-v0.1.0.spkg#format=bin
 ```
-Note: In our example, we generate the `sf.substreams.cosmos.v1.EventList` contains within the `wasm-events-v0.1.0.spkg` package.
+
+> [!NOTE] 
+> In our example, we generate the `sf.substreams.cosmos.v1.EventList` contains within the `map-events-v0.1.0.spkg` package.
 
 Now that your dev environment is fully set up, you are ready to deploy your subgraph!
 
@@ -140,20 +143,22 @@ Once you have finished writing your subgraph, you can now build, create and depl
 To deploy it on your `local graph-node` intance:
 
 ```bash
-yarn build
-yarn create-local
-yarn deploy-local
-#yarn remove-local 
+npm run build
+npm run create-local
+npm run deploy-local
+#npm run remove-local 
 ```
-Note: The `yarn remove-local` command is used to remove the subgraph from the local graph-node instance.
+
+> [!NOTE]
+> The `npm run remove-local` command is used to remove the subgraph from the local graph-node instance.
 
 ### Deploy on Subgraph studio
 To deploy your subgraph in `Subgraph Studio`:
 
 ```bash
-yarn build
-yarn create
-yarn deploy
+npm run build
+npm run create
+npm run deploy
 ```
 
 ## Query a subgraph 
@@ -163,7 +168,7 @@ Here is an example of query (based on our example) :
 
 ```graphQL
 {
-  usdtexchangevolumes(first:5) {
+  usdtexchangevVolumes(first:5) {
     id,
     amount
   }
@@ -175,7 +180,7 @@ Here is an example of query (based on our example) :
 Now that you have deployed your subgraph, you can choose to publish it to the Graph Network!
 
 ```bash
-yarn publish
+npm run publish
 ```
 
 ## Local Graph Node Management (Optional)
@@ -183,8 +188,12 @@ yarn publish
 ### Reset node 
 To reset and re-launch your local graph node, you can use the following script: 
 ```bash
-yarn reset-graph-node
+npm run reset-graph-node
 ``` 
 
 ### Check Logs 
-To check your graph-node logs, you can see the graph-node logs in the window running docker-compose, or you can fetch them from docker... 
+To check your graph-node logs, you can see the graph-node logs in the window running docker-compose, or you can fetch them from docker:
+
+```bash
+docker logs graph-node
+``` 
