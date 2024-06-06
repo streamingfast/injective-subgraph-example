@@ -36,7 +36,7 @@ export function handleEvents(bytes: Uint8Array): void {
 
         for (let i = 0; i < event.attributes.length; ++i) {
             const attr = event.attributes[i];
-            if (attr.key == '_contract_addr') {
+            if (attr.key == '_contract_address') {
                     contract_addr = attr.value;
             } else if (attr.key == '_action') {
                     action = attr.value;
@@ -50,6 +50,7 @@ export function handleEvents(bytes: Uint8Array): void {
                     offer_amount = attr.value;
             }
         }
+
         if (contract_addr != DOJO_addr) {
             continue;
         }

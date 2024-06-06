@@ -11,6 +11,7 @@ imports:
 modules:
   - name: map_events
     use: injective:filtered_events
+    initialBlock: 72934214
 
 params:
   map_events: wasm
