@@ -1,14 +1,14 @@
 {
-  "name": "subraphtest",
+  "name": "subgraphtest",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
     "publish": "graph publish",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ subraphtest",
-    "create-local": "graph create --node http://localhost:8020/ subraphtest",
-    "remove-local": "graph remove --node http://localhost:8020/ subraphtest",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 subraphtest",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ subgraphtest",
+    "create-local": "graph create --node http://localhost:8020/ subgraphtest",
+    "remove-local": "graph remove --node http://localhost:8020/ subgraphtest",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 subgraphtest",
     "test": "graph test",
     "launch-graph-node": "./dev-environment/start.sh",
     "reset-graph-node": "./dev-environment/start.sh -c"

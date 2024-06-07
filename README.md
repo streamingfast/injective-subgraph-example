@@ -162,7 +162,7 @@ npm run deploy
 ```
 
 ## Query a subgraph 
-Once you subgraph is deployed, you can query it! To do so, you can directly write your query locally on http://localhost:8000/subgraphs/name/subraphtest/ (do not forget to update the url if you deployed your subgraph using another name than `subgraphtest`) or directly on `Subgraph Studio`.
+Once you subgraph is deployed, you can query it! To do so, you can directly write your query locally on http://localhost:8000/subgraphs/name/subgraphtest/ (do not forget to update the url if you deployed your subgraph using another name than `subgraphtest`) or directly on `Subgraph Studio`.
 
 Here is an example of query (based on our example) :
 
