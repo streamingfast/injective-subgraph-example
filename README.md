@@ -168,7 +168,7 @@ Here is an example of query (based on our example) :
 
 ```graphQL
 {
-  usdtexchangevVolumes(first:5) {
+  usdtexchangevolumes(first:5) {
     id,
     amount
   }
