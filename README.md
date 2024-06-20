@@ -18,7 +18,6 @@ You will also learn how to deploy your subgraph on a `local` graph-node instance
   - [Generate additional Protobufs (Optional)](#generate-additional-protobufs-optional)
 - [Deploy a subgraph](#deploy-a-subgraph)
   - [Deploy on local graph-node (Optional)](#deploy-on-local-graph-node-optional)
-  - [Deploy on Subgraph studio](#deploy-on-subgraph-studio)
 - [Publish a Subgraph](#publish-a-subgraph)
 - [Local Graph Node Management](#local-graph-node-management-optional)
   - [Reset node](#reset-node)
@@ -137,7 +136,7 @@ buf generate --type="sf.substreams.cosmos.v1.EventList" map-events-v0.1.0.spkg#f
 Now that your dev environment is fully set up, you are ready to deploy your subgraph!
 
 ## Deploy a subgraph
-Once you have finished writing your subgraph, you can now build, create and deploy it through your `local graph-node` instance or in `Subgraph studio`.
+Once you have finished writing your subgraph, you can now build, create and deploy it through your `local graph-node` instance.
 
 ### Deploy on local graph-node (Optional)
 To deploy it on your `local graph-node` intance:
@@ -152,17 +151,8 @@ npm run deploy-local
 > [!NOTE]
 > The `npm run remove-local` command is used to remove the subgraph from the local graph-node instance.
 
-### Deploy on Subgraph studio
-To deploy your subgraph in `Subgraph Studio`:
-
-```bash
-npm run build
-npm run create
-npm run deploy
-```
-
 ## Query a subgraph 
-Once you subgraph is deployed, you can query it! To do so, you can directly write your query locally on http://localhost:8000/subgraphs/name/subgraphtest/ (do not forget to update the url if you deployed your subgraph using another name than `subgraphtest`) or directly on `Subgraph Studio`.
+Once you subgraph is deployed, you can query it! To do so, you can directly write your query locally on http://localhost:8000/subgraphs/name/subgraphtest/ (do not forget to update the url if you deployed your subgraph using another name than `subgraphtest`).
 
 Here is an example of query (based on our example) :
 
