@@ -6,7 +6,7 @@ By going through it, you will learn how to create your own subgraph taking his d
 You will also learn how to deploy your subgraph on a `local` graph-node instance or deploy it to an external node and publish it through `the Graph Network`.
 
 # Table of Contents
-- [Pre-requesites](#pre-requesites)
+- [Pre-requisites](#pre-requisites)
   - [Install Substreams](#install-substreams)
   - [Install Dependencies](#install-dependencies)
   - [Install Docker (Optional)](#install-docker-optional)
@@ -24,7 +24,7 @@ You will also learn how to deploy your subgraph on a `local` graph-node instance
   - [Reset node](#reset-node)
   - [Check logs](#check-logs)
 
-## Pre-requesites
+## Pre-requisites
 
 ### Install substreams
 Before starting, you need to install the `substreams CLI` (v1.7.2 or above). You got many options as explained in this [installation guide](https://substreams.streamingfast.io/documentation/consume/installing-the-cli). 
